@@ -3,12 +3,26 @@ package com.onlinebookstore.mapper;
 import com.onlinebookstore.dto.command.CreateBookCommand;
 import com.onlinebookstore.dto.command.UpdateBookCommand;
 import com.onlinebookstore.entity.Book;
-import org.mapstruct.Mapper;
+import org.springframework.stereotype.Component;
 
+@Component
+public class BookMapper {
 
-@Mapper
-public interface BookMapper {
-    Book toBookEntity(CreateBookCommand command);
+    public Book toBook(CreateBookCommand command) {
+        return Book.builder()
+            .author(command.author())
+            .isbn(command.isbn())
+            .title(command.title())
+            .publisher(command.publisher())
+            .build();
+    }
 
-    Book toBookEntity(UpdateBookCommand command);
+    public Book toBook(UpdateBookCommand command) {
+        return Book.builder()
+            .author(command.author())
+            .isbn(command.isbn())
+            .title(command.title())
+            .publisher(command.publisher())
+            .build();
+    }
 }

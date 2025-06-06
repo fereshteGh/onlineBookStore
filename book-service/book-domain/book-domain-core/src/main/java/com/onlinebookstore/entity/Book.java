@@ -1,7 +1,6 @@
 package com.onlinebookstore.entity;
 
 import com.onlinebookstore.Result;
-import com.onlinebookstore.Specification;
 import com.onlinebookstore.Validator;
 import com.onlinebookstore.valueobject.BookId;
 
@@ -12,6 +11,9 @@ public class Book extends AggregateRoot<BookId> {
     private String author;
     private String publisher;
     private String isbn;
+
+    public Book() {
+    }
 
     public Result<Void> validate() {
         return Validator.of()
@@ -32,6 +34,10 @@ public class Book extends AggregateRoot<BookId> {
         author = builder.author;
         publisher = builder.publisher;
         isbn = builder.isbn;
+    }
+
+    public static Builder builder() {
+        return new Builder();
     }
 
     public String getTitle() {
@@ -58,10 +64,6 @@ public class Book extends AggregateRoot<BookId> {
         private String isbn;
 
         private Builder() {
-        }
-
-        public static Builder builder() {
-            return new Builder();
         }
 
         public Builder bookId(BookId val) {

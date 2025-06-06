@@ -7,24 +7,30 @@ import com.onlinebookstore.dto.response.BookResponse;
 import com.onlinebookstore.entity.BookDomainService;
 import com.onlinebookstore.mapper.BookMapper;
 import com.onlinebookstore.port.input.BookApplicationService;
+import com.onlinebookstore.port.output.BookRepository;
 import org.springframework.stereotype.Service;
 
 
 @Service
 public class BookApplicationServiceImpl implements BookApplicationService {
-    private BookMapper bookMapper;
-    private BookDomainService bookDomainService;
+    private final BookMapper bookMapper;
+    private final BookDomainService bookDomainService;
+    private final BookRepository bookRepository;
 
-    public BookApplicationServiceImpl(BookMapper bookMapper, BookDomainService bookDomainService) {
+    public BookApplicationServiceImpl(BookMapper bookMapper,
+                                      BookDomainService bookDomainService,
+                                      BookRepository bookRepository) {
         this.bookMapper = bookMapper;
         this.bookDomainService = bookDomainService;
+        this.bookRepository = bookRepository;
     }
 
     @Override
     public BookResponse createBook(CreateBookCommand createBookCommand) {
-        Book bookEntity = bookMapper.toBookEntity(createBookCommand);
-        bookDomainService.validateAndInitiate(bookEntity);
-        return new BookResponse(bookEntity.getIsbn(),"book added");
+        Book book = bookMapper.toBook(createBookCommand);
+        bookDomainService.validateAndInitiate(book);
+        book = bookRepository.save(book);
+        return new BookResponse(book.getIsbn(), "book added");
     }
 
     @Override
