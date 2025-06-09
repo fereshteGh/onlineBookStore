@@ -9,7 +9,7 @@
     <version>0.0.1-SNAPSHOT</version>
   </parent>
 
-  <artifactId>book-dataaccess</artifactId>
+  <artifactId>book-data-access</artifactId>
 
   <properties>
     <maven.compiler.source>21</maven.compiler.source>
@@ -20,12 +20,19 @@
     <dependency>
       <groupId>com.onlinebookstore</groupId>
       <artifactId>book-application-service</artifactId>
-      <version>0.0.1-SNAPSHOT</version>
     </dependency>
     <dependency>
       <groupId>org.projectlombok</groupId>
       <artifactId>lombok</artifactId>
-      <version>1.18.30</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-data-jpa</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.postgresql</groupId>
+      <artifactId>postgresql</artifactId>
     </dependency>
   </dependencies>
 </project>

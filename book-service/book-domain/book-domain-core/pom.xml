@@ -10,16 +10,10 @@
   </parent>
 
   <artifactId>book-domain-core</artifactId>
-
-  <properties>
-    <maven.compiler.source>21</maven.compiler.source>
-    <maven.compiler.target>21</maven.compiler.target>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-  </properties>
-<dependencies>
-  <dependency>
-    <groupId>com.onlinebookstore</groupId>
-    <artifactId>common-domain</artifactId>
-  </dependency>
-</dependencies>
+  <dependencies>
+    <dependency>
+      <groupId>com.onlinebookstore</groupId>
+      <artifactId>common-domain</artifactId>
+    </dependency>
+  </dependencies>
 </project>

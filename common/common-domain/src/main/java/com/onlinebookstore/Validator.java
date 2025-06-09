@@ -1,7 +1,5 @@
 package com.onlinebookstore;
 
-import com.hazelcast.core.IFunction;
-
 import java.util.Objects;
 
 public class Validator<T> {
